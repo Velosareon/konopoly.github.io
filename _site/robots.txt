@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: http://konopoly.github.io/sitemap.xml

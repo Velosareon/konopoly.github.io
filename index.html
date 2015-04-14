@@ -1,26 +1,23 @@
 ---
-layout: default
+title: home
+description: Homepage for Konstantin Polyashenko's personal site.
+stylesheet: true
+sitemap:
+  changefreq: monthly
+  priority: 0.5
 ---
 
-<div class="home">
-
-  <div class="posts">
-    {% for post in paginator.posts %}
-      <div class="post">
-        <a href="{{ post.url | prepend: site.baseurl }}" class="post-link">
-          <p class="post-meta">{{ post.date | date: "%b %-d, %Y" }}</p>
-          <h3 class="h2 post-title">{{ post.title }}</h3>
-          <p class="post-summary">
-            {% if post.summary %}
-              {{ post.summary }}
-            {% else %}
-              {{ post.excerpt }}
-            {% endif %}
-          </p>
-        </a>
-      </div>
-    {% endfor %}
-  </div>
-
-  {% include pagination.html %}
+<div id="out">
+	<div id="middle">
+		<div id="in">
+			<a href="/"><h1><span style="color:#777;"></span> {{ site.name | upcase }}</h1></a>
+			<ul>
+				<li><a href="/about">about</a></li>
+				<li><a href="/projects">projects</a></li>
+				<li><a href="/articles">blog posts</a></li>
+				<li><a href="/resume.pdf">resume</a></li>
+				<li><a href="mailto:kman239@gmail.com">contact</a></li>
+			</ul>
+		</div>
+	</div>
 </div>
