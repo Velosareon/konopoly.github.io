@@ -2,7 +2,7 @@ name: Konstantin Polyashenko
 url: http://konopoly.github.io
 files_url: http://files.konopoly.github.io
 comments_url: http://comments.konopoly.github.io
-description: Severyn Kozak's personal portfolio site and blog.
+description: Konstantin Polyashenko's personal site and blog.
 permalink: /articles/:title
 markdown: kramdown
 lsi: true
