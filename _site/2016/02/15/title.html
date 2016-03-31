@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width initial-scale=1" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title>given an array of integers return an array of its products</title>
+    <meta name="description" content="">
+
+    <link rel="stylesheet" href="/css/main.css">
+    <link rel="canonical" href="/2016/02/15/title.html">
+
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+</head>
+
+
+  <body>
+
+    <header class="site-header">
+
+  <div class="wrapper">
+
+    <nav class="site-nav">
+
+      <div class="trigger">
+        <!--  instead of blog -->
+        <a class="page-link" href="/">blog</a>
+
+        
+          
+          <a class="page-link" href="/about/">about</a>
+          
+        
+          
+        
+          
+        
+          
+          <a class="page-link" href="/projects/">projects</a>
+          
+        
+
+      </div>
+    </nav>
+
+  </div>
+
+</header>
+
+
+
+    <div class="page-content">
+      <div class="wrapper">
+        <div class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">given an array of integers return an array of its products</h1>
+    <p class="post-meta">February 15, 2016 — 07:09</p>
+  </header>
+
+  <article class="post-content">
+    <p>Write a function that takes in an array of integers and returns an array of the products.</p>
+
+<p>Example:</p>
+
+<figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="o">[</span><span class="mi">1</span><span class="o">,</span> <span class="mi">7</span><span class="o">,</span> <span class="mi">3</span><span class="o">,</span> <span class="mi">4</span><span class="o">]</span> <span class="c1">//given array</span>
+<span class="o">[</span><span class="mi">7</span><span class="o">*</span><span class="mi">3</span><span class="o">*</span><span class="mi">4</span><span class="o">,</span> <span class="mi">1</span><span class="o">*</span><span class="mi">3</span><span class="o">*</span><span class="mi">4</span><span class="o">,</span> <span class="mi">1</span><span class="o">*</span><span class="mi">7</span><span class="o">*</span><span class="mi">4</span><span class="o">,</span> <span class="mi">1</span><span class="o">*</span><span class="mi">7</span><span class="o">*</span><span class="mi">3</span><span class="o">]</span> <span class="c1">//performed calculations</span>
+<span class="o">[</span><span class="mi">84</span><span class="o">,</span> <span class="mi">12</span><span class="o">,</span> <span class="mi">28</span><span class="o">,</span> <span class="mi">21</span><span class="o">]</span> <span class="c1">//returned array</span></code></pre></figure>
+
+<p>Code Overview:
+Use a double for loop. In each iteration of the outer for loop use the inner for loop to iterate through the
+entire array. Multiply all the values being iterated across in the inner for loop except when the current array
+value of the outer for loop is equal to the current array value of the inner for loop.</p>
+
+<figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="kd">class</span> <span class="nc">ProductArray</span>
+<span class="o">{</span>
+	<span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span>
+	<span class="o">{</span>
+		<span class="kt">int</span><span class="o">[]</span> <span class="n">list</span> <span class="o">=</span> <span class="o">{</span><span class="mi">1</span><span class="o">,</span> <span class="mi">7</span><span class="o">,</span> <span class="mi">3</span><span class="o">,</span> <span class="mi">4</span><span class="o">};</span>
+		<span class="n">getProductsOfAllIntsExceptAtIndex</span><span class="o">(</span><span class="n">list</span><span class="o">);</span>
+	<span class="o">}</span>
+
+	<span class="kd">public</span> <span class="kd">static</span> <span class="kt">int</span><span class="o">[]</span> <span class="nf">getProductsOfAllIntsExceptAtIndex</span><span class="o">(</span><span class="kt">int</span><span class="o">[]</span> <span class="n">arr</span><span class="o">)</span>
+	<span class="o">{</span>
+		<span class="kt">int</span> <span class="n">temp</span> <span class="o">=</span> <span class="mi">1</span><span class="o">;</span>
+		<span class="kt">int</span><span class="o">[]</span> <span class="n">returnArray</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">int</span><span class="o">[</span><span class="n">arr</span><span class="o">.</span><span class="na">length</span><span class="o">];</span>
+
+		<span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">arr</span><span class="o">.</span><span class="na">length</span><span class="o">;</span><span class="n">i</span><span class="o">++)</span>
+		<span class="o">{</span>
+			<span class="n">temp</span> <span class="o">=</span> <span class="mi">1</span><span class="o">;</span>
+			<span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">k</span><span class="o">=</span><span class="mi">0</span><span class="o">;</span> <span class="n">k</span> <span class="o">&lt;</span> <span class="n">arr</span><span class="o">.</span><span class="na">length</span><span class="o">;</span> <span class="n">k</span><span class="o">++)</span>
+			<span class="o">{</span>
+				<span class="k">if</span><span class="o">(</span><span class="n">arr</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">!=</span> <span class="n">arr</span><span class="o">[</span><span class="n">k</span><span class="o">])</span>
+				<span class="o">{</span>
+					<span class="n">temp</span> <span class="o">=</span> <span class="n">temp</span><span class="o">*</span><span class="n">arr</span><span class="o">[</span><span class="n">k</span><span class="o">];</span>
+				<span class="o">}</span>
+			<span class="o">}</span>
+			<span class="n">returnArray</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">=</span> <span class="n">temp</span><span class="o">;</span>
+		<span class="o">}</span>
+		<span class="k">return</span> <span class="n">returnArray</span><span class="o">;</span>
+	<span class="o">}</span>
+<span class="o">}</span></code></pre></figure>
+
+
+  </article>
+
+</div>
+
+      </div>
+    </div>
+
+    <footer class="site-footer">
+
+  <div class="wrapper">
+      
+  </div>
+
+</footer>
+
+
+  </body>
+
+</html>

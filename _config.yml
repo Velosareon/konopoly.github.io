@@ -1,0 +1,23 @@
+# Site settings
+title: *folio
+email: kpolyash@gmail.com
+description: > #
+baseurl:  # the subpath of your site, e.g. /blog/
+url:  # the base hostname & protocol for your site
+github_username:  konopoly
+
+# Build settings
+markdown: kramdown
+
+highlighter: pygments
+
+# Pagination
+gems: [jekyll-paginate]
+paginate: 5
+paginate_path: "page:num"
+
+
+collections:
+  poetry:
+    output: true
+    permalink: /poetry/:path/
