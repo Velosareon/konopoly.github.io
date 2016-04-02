@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width initial-scale=1" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title>given an array of integers return the highest possible product from three of the integers</title>
+    <meta name="description" content="">
+
+    <link rel="stylesheet" href="/css/main.css">
+    <link rel="canonical" href="/2016/02/17/title.html">
+
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+</head>
+
+
+  <body>
+
+    <header class="site-header">
+
+  <div class="wrapper">
+
+    <nav class="site-nav">
+
+      <div class="trigger">
+        <!--  instead of blog -->
+        <a class="page-link" href="/">blog</a>
+
+        
+          
+          <a class="page-link" href="/about/">about</a>
+          
+        
+          
+        
+          
+        
+          
+          <a class="page-link" href="/projects/">projects</a>
+          
+        
+
+      </div>
+    </nav>
+
+  </div>
+
+</header>
+
+
+
+    <div class="page-content">
+      <div class="wrapper">
+        <div class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">given an array of integers return the highest possible product from three of the integers</h1>
+    <p class="post-meta">February 17, 2016 — 07:04</p>
+  </header>
+
+  <article class="post-content">
+    <p>Write a function that takes an integer array as input and returns the highest possible product
+that you can get from three of the integers.</p>
+
+<p>Example:</p>
+
+<figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="o">[</span><span class="mi">1</span><span class="o">,</span> <span class="mi">2</span><span class="o">,</span> <span class="mi">3</span><span class="o">,</span> <span class="mi">4</span><span class="o">]</span> <span class="c1">//given array</span>
+<span class="mi">4</span><span class="o">*</span><span class="mi">3</span><span class="o">*</span><span class="mi">2</span> <span class="c1">//performed calculations</span>
+<span class="mi">24</span> <span class="c1">//returned integer</span></code></pre></figure>
+
+<p>Brute Force Code Overview:
+The easy solution would be to use a sorting algorithm(bubble sort) to sort the array. Then
+take the three last array integers and multiple them together. This solution is not preferred
+because the time complexity is bad(O(n^2)).</p>
+
+<figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">static</span> <span class="kt">int</span> <span class="nf">highestProduct</span><span class="o">(</span><span class="kt">int</span><span class="o">[]</span> <span class="n">arr</span><span class="o">)</span>
+<span class="o">{</span>
+  <span class="c1">//bubble sort given array</span>
+  <span class="kt">int</span> <span class="n">temp</span><span class="o">;</span>
+  <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">arr</span><span class="o">.</span><span class="na">length</span><span class="o">-</span><span class="mi">1</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span>
+  <span class="o">{</span>
+    <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">j</span><span class="o">=</span><span class="mi">1</span><span class="o">;</span> <span class="n">j</span> <span class="o">&lt;</span> <span class="n">arr</span><span class="o">.</span><span class="na">length</span><span class="o">-</span><span class="n">i</span><span class="o">;</span> <span class="n">j</span><span class="o">++)</span>
+    <span class="o">{</span>
+      <span class="k">if</span><span class="o">(</span><span class="n">arr</span><span class="o">[</span><span class="n">j</span><span class="o">-</span><span class="mi">1</span><span class="o">]</span> <span class="o">&gt;</span> <span class="n">arr</span><span class="o">[</span><span class="n">j</span><span class="o">])</span>
+      <span class="o">{</span>
+        <span class="n">temp</span> <span class="o">=</span> <span class="n">arr</span><span class="o">[</span><span class="n">j</span><span class="o">-</span><span class="mi">1</span><span class="o">];</span>
+        <span class="n">arr</span><span class="o">[</span><span class="n">j</span><span class="o">-</span><span class="mi">1</span><span class="o">]</span> <span class="o">=</span> <span class="n">arr</span><span class="o">[</span><span class="n">j</span><span class="o">];</span>
+        <span class="n">arr</span><span class="o">[</span><span class="n">j</span><span class="o">]</span> <span class="o">=</span> <span class="n">temp</span><span class="o">;</span>
+      <span class="o">}</span>
+    <span class="o">}</span>
+  <span class="o">}</span>
+  <span class="kt">int</span> <span class="n">product</span><span class="o">;</span>
+  <span class="n">product</span> <span class="o">=</span> <span class="n">arr</span><span class="o">[(</span><span class="n">arr</span><span class="o">.</span><span class="na">length</span><span class="o">-</span><span class="mi">1</span><span class="o">)]</span> <span class="o">*</span> <span class="n">arr</span><span class="o">[(</span><span class="n">arr</span><span class="o">.</span><span class="na">length</span><span class="o">-</span><span class="mi">2</span><span class="o">)]</span> <span class="o">*</span> <span class="n">arr</span><span class="o">[(</span><span class="n">arr</span><span class="o">.</span><span class="na">length</span><span class="o">-</span><span class="mi">3</span><span class="o">)];</span>
+  <span class="k">return</span> <span class="n">product</span><span class="o">;</span>
+<span class="o">}</span></code></pre></figure>
+
+<p>Final Solution Code Overview:
+Without sorting the array, this method only require one iteration through the array. Use three
+placeholders for the three largest values in the array. In the for loop if the current integer of the array is larger than temp1 assign it to temp1 and assign the previous temp1 to temp2 and the previous temp2 to temp3. This way temp1, temp2, and temp3 will have the three largest values of array in order.</p>
+
+<figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">static</span> <span class="kt">int</span> <span class="nf">highestProduct</span><span class="o">(</span><span class="kt">int</span><span class="o">[]</span> <span class="n">arr</span><span class="o">)</span>
+<span class="o">{</span>
+  <span class="kt">int</span> <span class="n">temp1</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="c1">//largest value in array</span>
+  <span class="kt">int</span> <span class="n">temp2</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="c1">//second largest value in array</span>
+  <span class="kt">int</span> <span class="n">temp3</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="c1">//third largest value in array</span>
+  <span class="c1">//iterate through the array</span>
+  <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="o">;</span> <span class="n">i</span><span class="o">&lt;</span><span class="n">arr</span><span class="o">.</span><span class="na">length</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span>
+  <span class="o">{</span>
+    <span class="k">if</span><span class="o">(</span><span class="n">arr</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">&gt;</span> <span class="n">temp1</span><span class="o">)</span>
+    <span class="o">{</span>
+      <span class="n">temp3</span> <span class="o">=</span> <span class="n">temp2</span><span class="o">;</span>
+      <span class="n">temp2</span> <span class="o">=</span> <span class="n">temp1</span><span class="o">;</span>
+      <span class="n">temp1</span> <span class="o">=</span> <span class="n">arr</span><span class="o">[</span><span class="n">i</span><span class="o">];</span>
+    <span class="o">}</span>
+    <span class="k">else</span> <span class="nf">if</span><span class="o">(</span><span class="n">arr</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">&gt;</span> <span class="n">temp2</span><span class="o">)</span>
+    <span class="o">{</span>
+      <span class="n">temp2</span> <span class="o">=</span> <span class="n">arr</span><span class="o">[</span><span class="n">i</span><span class="o">];</span>
+    <span class="o">}</span>
+    <span class="k">else</span> <span class="nf">if</span><span class="o">(</span><span class="n">arr</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">&gt;</span> <span class="n">temp3</span><span class="o">)</span>
+    <span class="o">{</span>
+      <span class="n">temp3</span> <span class="o">=</span> <span class="n">arr</span><span class="o">[</span><span class="n">i</span><span class="o">];</span>
+    <span class="o">}</span>
+  <span class="o">}</span>
+  <span class="k">return</span> <span class="n">temp1</span><span class="o">*</span><span class="n">temp2</span><span class="o">*</span><span class="n">temp3</span><span class="o">;</span>
+<span class="o">}</span></code></pre></figure>
+
+
+  </article>
+
+</div>
+
+      </div>
+    </div>
+
+    <footer class="site-footer">
+
+  <div class="wrapper">
+      
+  </div>
+
+</footer>
+
+
+  </body>
+
+</html>
