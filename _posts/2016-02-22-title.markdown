@@ -1,0 +1,40 @@
+---
+layout: post
+title: find the area of overlay between two rectangles
+date: 2016-02-22 19:15:00
+description: code practice problem
+---
+Write a function that takes an integer array as input and returns the highest possible product
+that you can get from three of the integers.
+
+Example:
+{% highlight java %}
+//given objects for each rectangle
+//object arguments are (leftX, bottomY, width, height)
+Rectangle firstRectangle = new Rectangle(1,1,3,1);
+Rectangle secondRectangle = new Rectangle(2,1,1,2);
+
+//result is a rectangle object
+{% endhighlight %}
+<img src="/img/1.png" style="width:304px;height:228px;">
+<img src="/img/2.png" style="width:250px;height:228px;">
+
+Solution Overview:
+Determine the X and Y sizes of the lines connected to the given (X,Y) point. Then
+determine if the X lines overlap between the two rectangles. Do the same for the Y lines.
+Finally simply multiply the X and Y overlap to determine the area of the overlap rectangles.
+<br>
+To determine the overlap of the two X lines determine the highest endpoint of the two lines. Then compare that value to smallest endpoint of the two X lines. If the lowest endpoint is larger than
+the highest endpoint, then there is no overlap. Otherwise subtract the highest endpoint from the
+lowest endpoint to get the overlap size.
+<br>
+<img src="/img/3.png" style="width:304px;height:90px;">
+<img src="/img/4.png" style="width:304px;height:90px;">
+<br>
+The same thing is done to get the overlap between the two Y lines.
+
+{% highlight java %}
+{% endhighlight %}
+
+{% highlight java %}
+{% endhighlight %}
