@@ -32,7 +32,7 @@ lowest endpoint to get the overlap size.
 <br>
 The same thing is done to get the overlap between the two Y lines.
 
-```javascript
+{% highlight java %}
 public class P6
 {
 	public static void main(String[] args)
@@ -83,7 +83,7 @@ public class P6
 		return xoverlay*yoverlay;
 	}
 }
-```
+{% endhighlight %}
 
 {% highlight java %}
 {% endhighlight %}
