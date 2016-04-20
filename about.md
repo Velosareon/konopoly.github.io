@@ -9,7 +9,7 @@ permalink: /about/
 <br/>
 My name is Konstantin Polyashenko. I am a software developer and senior computer science
 student at CSU Sacramento. My resume can be found
-<a href="https://drive.google.com/open?id=0B68G5GeXa1peakxQQ3VrNXBObG8">here</a>
+<a href="https://drive.google.com/file/d/0B68G5GeXa1peNEpNZm1iN2VzUTQ/view?usp=sharing">here</a>
 and you can contact me using the links below.
 
 <br/>
