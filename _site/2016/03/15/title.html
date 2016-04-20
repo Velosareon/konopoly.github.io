@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width initial-scale=1" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title>write a function to take a list of time ranges and return a list of condensed ranges</title>
+    <meta name="description" content="">
+
+    <link rel="stylesheet" href="/css/main.css">
+    <link rel="canonical" href="/2016/03/15/title.html">
+
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+</head>
+
+
+  <body>
+
+    <header class="site-header">
+
+  <div class="wrapper">
+
+    <nav class="site-nav">
+
+      <div class="trigger">
+        <!--  instead of blog -->
+        <a class="page-link" href="/">blog</a>
+
+        
+          
+          <a class="page-link" href="/about/">about</a>
+          
+        
+          
+        
+          
+        
+          
+          <a class="page-link" href="/projects/">projects</a>
+          
+        
+
+      </div>
+    </nav>
+
+  </div>
+
+</header>
+
+
+
+    <div class="page-content">
+      <div class="wrapper">
+        <div class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">write a function to take a list of time ranges and return a list of condensed ranges</h1>
+    <p class="post-meta">March 15, 2016 — 19:09</p>
+  </header>
+
+  <article class="post-content">
+    <p>Determine what times of day everybody is available for a meeting. Meetings are stored as objects of the Meeting class with integer variables startTime and endTime. The integers represent the number of 30-minute blocks past 9:00AM.</p>
+
+<p>Example:</p>
+
+<figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="c1">//given Meeting objects</span>
+<span class="k">new</span> <span class="nf">Meeting</span><span class="o">(</span><span class="mi">2</span><span class="o">,</span> <span class="mi">4</span><span class="o">);</span> <span class="c1">// meeting from 10:00AM – 11:00AM</span>
+<span class="k">new</span> <span class="nf">Meeting</span><span class="o">(</span><span class="mi">3</span><span class="o">,</span> <span class="mi">5</span><span class="o">);</span> <span class="c1">// meeting from 10:30AM – 11:30AM</span>
+
+<span class="c1">//store the Meeting objects in a List</span>
+<span class="o">[(</span><span class="mi">2</span><span class="o">,</span> <span class="mi">4</span><span class="o">),</span> <span class="o">(</span><span class="mi">3</span><span class="o">,</span> <span class="mi">5</span><span class="o">)]</span>
+
+<span class="c1">//return the condensed range of meeting times</span>
+<span class="c1">//times not included are times where everybody is available</span>
+<span class="o">[(</span><span class="mi">2</span><span class="o">,</span> <span class="mi">5</span><span class="o">)]</span></code></pre></figure>
+
+<p>Code Overview:
+Since it is not assumed that the meeting times are in order, the list should first be sorted
+according to the startTime of the meeting. Next declare a new List to store merged meeting times. Two meetings have overlapping times between them if the startTime of the first meeting is bigger than or equal to the endTime of the second meeting. When there is an overlap a new meeting is created with the startTime being the smaller of the two from the previous startTimes and the endTime being the bigger of the two from the previous endTimes.</p>
+
+<figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="kn">import</span> <span class="nn">java.util.*</span><span class="o">;</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">P4</span>
+<span class="o">{</span>
+	<span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span>
+	<span class="o">{</span>
+		<span class="c1">//Meeting(startTime, endTime) Meeting firstMeeting = new Meeting(0,1); // meeting from 9:00AM – 9:30AM Meeting secondMeeting = new Meeting(3,5); // meeting from 10:30AM – 11:30AM Meeting thirdMeeting = new Meeting(2,7); // meeting from 10:00AM – 12:30PM List&lt;Meeting&gt; meetings = new ArrayList&lt;Meeting&gt;(); //adds Meeting objects to meetings list meetings.add(firstMeeting); meetings.add(secondMeeting); meetings.add(thirdMeeting); //sorts list according to start time of each list entry Collections.sort(meetings, new MeetingStartTimeComparator()); //list for holding merged meeting times List&lt;Meeting&gt; mergedList = new ArrayList&lt;Meeting&gt;(); //initialized mergedList with first element from list mergedList.add(meetings.get(0)); //iterate throught list and merge overlapping meeting times for (int i = 0; i &lt; meetings.size(); i++) { meetings.get(i); //lastMergedMeeting holds the most recent entry into the mergedList list Meeting lastMergedMeeting = mergedList.get(mergedList.size() - 1); //overlap between meeting times //if starttime of current Meeting from meetings list &lt;= endtime of most recent //entry into mergedList if (meetings.get(i).startTime &lt;= lastMergedMeeting.endTime) { lastMergedMeeting.endTime = Math.max(lastMergedMeeting.endTime, meetings.get(i).endTime); } //no overlap, copy current meeting object from meetings list into MergedList else { mergedList.add(meetings.get(i)); } } } }</span></code></pre></figure>
+
+
+  </article>
+
+</div>
+
+      </div>
+    </div>
+
+    <footer class="site-footer">
+
+  <div class="wrapper">
+      
+  </div>
+
+</footer>
+
+
+  </body>
+
+</html>

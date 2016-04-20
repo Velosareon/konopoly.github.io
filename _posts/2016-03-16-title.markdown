@@ -1,0 +1,34 @@
+---
+layout: post
+title: write a function to take a list of time ranges and return a list of condensed ranges
+date: 2016-03-16 02:09:00
+description: code practice problem
+---
+Determine what times of day everybody is available for a meeting. Meetings are stored as objects of the Meeting class with integer variables startTime and endTime. The integers represent the number of 30-minute blocks past 9:00AM.
+
+Example:
+{% highlight java %}
+//given Meeting objects
+new Meeting(2, 4); // meeting from 10:00AM – 11:00AM
+new Meeting(3, 5); // meeting from 10:30AM – 11:30AM
+
+//store the Meeting objects in a List
+[(2, 4), (3, 5)]
+
+//return the condensed range of meeting times
+//times not included are times where everybody is available
+[(2, 5)]
+{% endhighlight %}
+
+Code Overview:
+Since it is not assumed that the meeting times are in order, the list should first be sorted
+according to the startTime of the meeting. Next declare a new List to store merged meeting times. Two meetings have overlapping times between them if the startTime of the first meeting is bigger than or equal to the endTime of the second meeting. When there is an overlap a new meeting is created with the startTime being the smaller of the two from the previous startTimes and the endTime being the bigger of the two from the previous endTimes.
+
+{% highlight java %}
+import java.util.*;
+public class P4
+{
+	public static void main(String[] args)
+	{
+		//Meeting(startTime, endTime) Meeting firstMeeting = new Meeting(0,1); // meeting from 9:00AM – 9:30AM Meeting secondMeeting = new Meeting(3,5); // meeting from 10:30AM – 11:30AM Meeting thirdMeeting = new Meeting(2,7); // meeting from 10:00AM – 12:30PM List<Meeting> meetings = new ArrayList<Meeting>(); //adds Meeting objects to meetings list meetings.add(firstMeeting); meetings.add(secondMeeting); meetings.add(thirdMeeting); //sorts list according to start time of each list entry Collections.sort(meetings, new MeetingStartTimeComparator()); //list for holding merged meeting times List<Meeting> mergedList = new ArrayList<Meeting>(); //initialized mergedList with first element from list mergedList.add(meetings.get(0)); //iterate throught list and merge overlapping meeting times for (int i = 0; i < meetings.size(); i++) { meetings.get(i); //lastMergedMeeting holds the most recent entry into the mergedList list Meeting lastMergedMeeting = mergedList.get(mergedList.size() - 1); //overlap between meeting times //if starttime of current Meeting from meetings list <= endtime of most recent //entry into mergedList if (meetings.get(i).startTime <= lastMergedMeeting.endTime) { lastMergedMeeting.endTime = Math.max(lastMergedMeeting.endTime, meetings.get(i).endTime); } //no overlap, copy current meeting object from meetings list into MergedList else { mergedList.add(meetings.get(i)); } } } }
+{% endhighlight %}
