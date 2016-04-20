@@ -26,9 +26,95 @@ according to the startTime of the meeting. Next declare a new List to store merg
 
 {% highlight java %}
 import java.util.*;
+
 public class P4
 {
-	public static void main(String[] args)
-	{
-		//Meeting(startTime, endTime) Meeting firstMeeting = new Meeting(0,1); // meeting from 9:00AM – 9:30AM Meeting secondMeeting = new Meeting(3,5); // meeting from 10:30AM – 11:30AM Meeting thirdMeeting = new Meeting(2,7); // meeting from 10:00AM – 12:30PM List<Meeting> meetings = new ArrayList<Meeting>(); //adds Meeting objects to meetings list meetings.add(firstMeeting); meetings.add(secondMeeting); meetings.add(thirdMeeting); //sorts list according to start time of each list entry Collections.sort(meetings, new MeetingStartTimeComparator()); //list for holding merged meeting times List<Meeting> mergedList = new ArrayList<Meeting>(); //initialized mergedList with first element from list mergedList.add(meetings.get(0)); //iterate throught list and merge overlapping meeting times for (int i = 0; i < meetings.size(); i++) { meetings.get(i); //lastMergedMeeting holds the most recent entry into the mergedList list Meeting lastMergedMeeting = mergedList.get(mergedList.size() - 1); //overlap between meeting times //if starttime of current Meeting from meetings list <= endtime of most recent //entry into mergedList if (meetings.get(i).startTime <= lastMergedMeeting.endTime) { lastMergedMeeting.endTime = Math.max(lastMergedMeeting.endTime, meetings.get(i).endTime); } //no overlap, copy current meeting object from meetings list into MergedList else { mergedList.add(meetings.get(i)); } } } }
+  public static void main(String[] args)
+  {
+    //Meeting(startTime, endTime)
+    Meeting firstMeeting = new Meeting(0,1); //9:00AM – 9:30AM
+    Meeting secondMeeting = new Meeting(3,5); //10:30AM – 11:30AM
+    Meeting thirdMeeting = new Meeting(2,7); //10:00AM – 12:30PM
+    
+    List<Meeting> meetings = new ArrayList<Meeting>();
+    //adds Meeting objects to meetings list
+    meetings.add(firstMeeting);
+    meetings.add(secondMeeting);
+    meetings.add(thirdMeeting);
+    
+    //sorts list according to start time of each list entry
+    Collections.sort(meetings, new MeetingStartTimeComparator());
+    
+    //list for holding merged meeting times
+    List<Meeting> mergedList = new ArrayList<Meeting>();
+    //initialized mergedList with first element from list
+    mergedList.add(meetings.get(0));
+    
+    //iterate throught list and merge overlapping meeting times
+    for (int i = 0; i < meetings.size(); i++)
+    {
+      meetings.get(i);
+      //holds the most recent entry into the mergedList list
+      Meeting lastMergedMeeting = mergedList.get(mergedList.size() - 1);
+      
+      if (meetings.get(i).startTime <= lastMergedMeeting.endTime)
+      {
+        lastMergedMeeting.endTime = Math.max(lastMergedMeeting.endTime, 
+            meetings.get(i).endTime);
+      }
+      
+      //no overlap
+      else
+      {
+        mergedList.add(meetings.get(i));
+      }
+    }
+  }
+}
+{% endhighlight %}
+
+{% highlight java %}
+public class Meeting
+{
+  int startTime;
+  int endTime;
+
+  public Meeting(int startTime, int endTime)
+  {
+    // number of 30 min blocks past 9:00 am
+    this.startTime = startTime;
+    this.endTime = endTime;
+  }
+
+  //starttime getter
+  public int getStartTime()
+  {
+    return startTime;
+  }
+  
+  //endtime getter
+  public int getEndTime()
+  {
+    return endTime;
+  }
+  
+  public String toString()
+  {
+    return String.format("(%d, %d)", startTime, endTime);
+  }
+}
+{% endhighlight %}
+
+
+{% highlight java %}
+import java.util.*;
+
+//MeetingStartTimeComparator class implements Comparator interface
+class MeetingStartTimeComparator implements Comparator<Meeting>
+{
+  public int compare(Meeting meeting1, Meeting meeting2)
+  {
+    return meeting1.getStartTime() - meeting2.getStartTime();
+  }
+}
 {% endhighlight %}

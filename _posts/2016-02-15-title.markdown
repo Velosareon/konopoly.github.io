@@ -22,30 +22,29 @@ value of the outer for loop is equal to the current array value of the inner for
 {% highlight java %}
 class ProductArray
 {
-	public static void main(String[] args)
-	{
-		int[] list = {1, 7, 3, 4};
-		getProductsOfAllIntsExceptAtIndex(list);
-	}
+  public static void main(String[] args)
+  {
+    int[] list = {1, 7, 3, 4};
+    getProductsOfAllIntsExceptAtIndex(list);
+  }
 
-	public static int[] getProductsOfAllIntsExceptAtIndex(int[] arr)
-	{
-		int temp = 1;
-		int[] returnArray = new int[arr.length];
-
-		for(int i=0; i < arr.length;i++)
-		{
-			temp = 1;
-			for(int k=0; k < arr.length; k++)
-			{
-				if(arr[i] != arr[k])
-				{
-					temp = temp*arr[k];
-				}
-			}
-			returnArray[i] = temp;
-		}
-		return returnArray;
-	}
+  public static int[] getProductsOfAllIntsExceptAtIndex(int[] arr)
+  {
+    int temp = 1;
+    int[] returnArray = new int[arr.length];
+    for(int i=0; i < arr.length;i++)
+    {
+      temp = 1;
+      for(int k=0; k < arr.length; k++)
+      {
+        if(arr[i] != arr[k])
+        {
+          temp = temp*arr[k];
+        }
+      }
+      returnArray[i] = temp;
+    }
+    return returnArray;
+  }
 }
 {% endhighlight %}

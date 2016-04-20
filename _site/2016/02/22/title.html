@@ -61,8 +61,7 @@
   </header>
 
   <article class="post-content">
-    <p>Write a function that takes an integer array as input and returns the highest possible product
-that you can get from three of the integers.</p>
+    <p>Write a function to find the rectangular intersection of two given rectangles.</p>
 
 <p>Example:</p>
 
@@ -89,6 +88,100 @@ lowest endpoint to get the overlap size.
 <img src="/img/4.png" style="width:304px;height:90px;" />
 <br />
 The same thing is done to get the overlap between the two Y lines.</p>
+
+<figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">P6</span>
+<span class="o">{</span>
+  <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span>
+  <span class="o">{</span>
+    <span class="c1">//(leftX, bottomY, width, height)</span>
+    <span class="n">Rectangle</span> <span class="n">firstRectangle</span> <span class="o">=</span> <span class="k">new</span> <span class="nf">Rectangle</span><span class="o">(</span><span class="mi">1</span><span class="o">,</span><span class="mi">1</span><span class="o">,</span><span class="mi">6</span><span class="o">,</span><span class="mi">3</span><span class="o">);</span>
+    <span class="n">Rectangle</span> <span class="n">secondRectangle</span> <span class="o">=</span> <span class="k">new</span> <span class="nf">Rectangle</span><span class="o">(</span><span class="mi">2</span><span class="o">,</span><span class="mi">1</span><span class="o">,</span><span class="mi">4</span><span class="o">,</span><span class="mi">6</span><span class="o">);</span>
+
+    <span class="c1">//area of overlay between the two rectangles</span>
+    <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">findOverlayArea</span><span class="o">(</span>
+        <span class="n">findXOverlay</span><span class="o">(</span><span class="n">firstRectangle</span><span class="o">.</span><span class="na">determineXLine</span><span class="o">(),</span>
+          <span class="n">secondRectangle</span><span class="o">.</span><span class="na">determineXLine</span><span class="o">()),</span>
+        <span class="n">findYOverlay</span><span class="o">(</span><span class="n">firstRectangle</span><span class="o">.</span><span class="na">determineYLine</span><span class="o">(),</span>
+          <span class="n">secondRectangle</span><span class="o">.</span><span class="na">determineYLine</span><span class="o">())));</span>
+  <span class="o">}</span>
+
+  <span class="c1">//determine overlay between x line of the two rectangles</span>
+  <span class="kd">public</span> <span class="kd">static</span> <span class="kt">int</span> <span class="nf">findXOverlay</span><span class="o">(</span><span class="kt">int</span><span class="o">[]</span> <span class="n">x</span><span class="o">,</span> <span class="kt">int</span><span class="o">[]</span> <span class="n">sx</span><span class="o">)</span>
+  <span class="o">{</span>
+      <span class="kt">int</span> <span class="n">higherStartingPoint</span> <span class="o">=</span> <span class="n">Math</span><span class="o">.</span><span class="na">max</span><span class="o">(</span><span class="n">x</span><span class="o">[</span><span class="mi">0</span><span class="o">],</span><span class="n">sx</span><span class="o">[</span><span class="mi">0</span><span class="o">]);</span>
+      <span class="kt">int</span> <span class="n">lowerEndingPoint</span> <span class="o">=</span> <span class="n">Math</span><span class="o">.</span><span class="na">min</span><span class="o">(</span><span class="n">x</span><span class="o">[</span><span class="mi">1</span><span class="o">],</span><span class="n">sx</span><span class="o">[</span><span class="mi">1</span><span class="o">]);</span>
+      <span class="kt">int</span> <span class="n">totalXOverlap</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
+
+      <span class="k">if</span><span class="o">(</span><span class="n">higherStartingPoint</span> <span class="o">&gt;=</span> <span class="n">lowerEndingPoint</span><span class="o">)</span>
+      <span class="o">{</span>
+        <span class="k">return</span> <span class="n">totalXOverlap</span><span class="o">;</span>
+      <span class="o">}</span>
+      <span class="k">else</span>
+      <span class="o">{</span>
+        <span class="n">totalXOverlap</span> <span class="o">=</span> <span class="n">lowerEndingPoint</span> <span class="o">-</span> <span class="n">higherStartingPoint</span><span class="o">;</span>
+        <span class="k">return</span> <span class="n">totalXOverlap</span><span class="o">;</span>
+      <span class="o">}</span>
+  <span class="o">}</span>
+
+  <span class="c1">//determine overlay between y line of the two rectangles</span>
+  <span class="kd">public</span> <span class="kd">static</span> <span class="kt">int</span> <span class="nf">findYOverlay</span><span class="o">(</span><span class="kt">int</span><span class="o">[]</span> <span class="n">y</span><span class="o">,</span> <span class="kt">int</span><span class="o">[]</span> <span class="n">sy</span><span class="o">)</span>
+  <span class="o">{</span>
+      <span class="kt">int</span> <span class="n">higherStartingPoint</span> <span class="o">=</span> <span class="n">Math</span><span class="o">.</span><span class="na">max</span><span class="o">(</span><span class="n">y</span><span class="o">[</span><span class="mi">0</span><span class="o">],</span><span class="n">sy</span><span class="o">[</span><span class="mi">0</span><span class="o">]);</span>
+      <span class="kt">int</span> <span class="n">lowerEndingPoint</span> <span class="o">=</span> <span class="n">Math</span><span class="o">.</span><span class="na">min</span><span class="o">(</span><span class="n">y</span><span class="o">[</span><span class="mi">1</span><span class="o">],</span><span class="n">sy</span><span class="o">[</span><span class="mi">1</span><span class="o">]);</span>
+      <span class="kt">int</span> <span class="n">totalYOverlap</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
+
+      <span class="k">if</span><span class="o">(</span><span class="n">higherStartingPoint</span> <span class="o">&gt;=</span> <span class="n">lowerEndingPoint</span><span class="o">)</span>
+      <span class="o">{</span>
+          <span class="k">return</span> <span class="n">totalYOverlap</span><span class="o">;</span>
+      <span class="o">}</span>
+      <span class="k">else</span>
+      <span class="o">{</span>
+         <span class="n">totalYOverlap</span> <span class="o">=</span> <span class="n">lowerEndingPoint</span> <span class="o">-</span> <span class="n">higherStartingPoint</span><span class="o">;</span>
+         <span class="k">return</span> <span class="n">totalYOverlap</span><span class="o">;</span>
+      <span class="o">}</span>
+  <span class="o">}</span>
+
+  <span class="kd">public</span> <span class="kd">static</span> <span class="kt">int</span> <span class="nf">findOverlayArea</span><span class="o">(</span><span class="kt">int</span> <span class="n">xoverlay</span><span class="o">,</span> <span class="kt">int</span> <span class="n">yoverlay</span><span class="o">)</span>
+  <span class="o">{</span>
+      <span class="k">return</span> <span class="n">xoverlay</span><span class="o">*</span><span class="n">yoverlay</span><span class="o">;</span>
+  <span class="o">}</span>
+<span class="o">}</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Rectangle</span>
+<span class="o">{</span>
+  <span class="c1">//coordinates of bottom left corner</span>
+  <span class="n">Integer</span> <span class="n">x</span><span class="o">;</span>
+  <span class="n">Integer</span> <span class="n">y</span><span class="o">;</span>
+
+  <span class="c1">// dimensions</span>
+  <span class="n">Integer</span> <span class="n">width</span><span class="o">;</span>
+  <span class="n">Integer</span> <span class="n">height</span><span class="o">;</span>
+
+  <span class="c1">//constuctor for the two initial rectangles</span>
+  <span class="kd">public</span> <span class="nf">Rectangle</span><span class="o">(</span><span class="n">Integer</span> <span class="n">x</span><span class="o">,</span> <span class="n">Integer</span> <span class="n">y</span><span class="o">,</span> <span class="n">Integer</span> <span class="n">width</span><span class="o">,</span> <span class="n">Integer</span> <span class="n">height</span><span class="o">)</span>
+  <span class="o">{</span>
+    <span class="k">this</span><span class="o">.</span><span class="na">x</span> <span class="o">=</span> <span class="n">x</span><span class="o">;</span>
+    <span class="k">this</span><span class="o">.</span><span class="na">y</span> <span class="o">=</span> <span class="n">y</span><span class="o">;</span>
+    <span class="k">this</span><span class="o">.</span><span class="na">width</span>  <span class="o">=</span> <span class="n">width</span><span class="o">;</span>
+    <span class="k">this</span><span class="o">.</span><span class="na">height</span> <span class="o">=</span> <span class="n">height</span><span class="o">;</span>
+  <span class="o">}</span>
+
+  <span class="c1">//size of rectangles X line, starting at lowest left point</span>
+  <span class="kd">public</span> <span class="kt">int</span><span class="o">[]</span> <span class="nf">determineXLine</span><span class="o">()</span>
+  <span class="o">{</span>
+    <span class="c1">//array to hold the first and last point in X line</span>
+    <span class="kt">int</span><span class="o">[]</span> <span class="n">xLine</span> <span class="o">=</span> <span class="o">{</span><span class="n">x</span><span class="o">,</span> <span class="o">(</span><span class="n">x</span><span class="o">+</span><span class="n">width</span><span class="o">)};</span>
+    <span class="k">return</span> <span class="n">xLine</span><span class="o">;</span>
+  <span class="o">}</span>
+
+  <span class="c1">//size of rectangles Y line, starting at lowest left point</span>
+  <span class="kd">public</span> <span class="kt">int</span><span class="o">[]</span> <span class="nf">determineYLine</span><span class="o">()</span>
+  <span class="o">{</span>
+    <span class="c1">//array to hold the first and last point in X line</span>
+    <span class="kt">int</span><span class="o">[]</span> <span class="n">yLine</span> <span class="o">=</span> <span class="o">{</span><span class="n">y</span><span class="o">,</span> <span class="o">(</span><span class="n">y</span><span class="o">+</span><span class="n">height</span><span class="o">)};</span>
+    <span class="k">return</span> <span class="n">yLine</span><span class="o">;</span>
+  <span class="o">}</span>
+<span class="o">}</span></code></pre></figure>
 
 
   </article>

@@ -76,31 +76,30 @@ value of the outer for loop is equal to the current array value of the inner for
 
 <figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="kd">class</span> <span class="nc">ProductArray</span>
 <span class="o">{</span>
-	<span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span>
-	<span class="o">{</span>
-		<span class="kt">int</span><span class="o">[]</span> <span class="n">list</span> <span class="o">=</span> <span class="o">{</span><span class="mi">1</span><span class="o">,</span> <span class="mi">7</span><span class="o">,</span> <span class="mi">3</span><span class="o">,</span> <span class="mi">4</span><span class="o">};</span>
-		<span class="n">getProductsOfAllIntsExceptAtIndex</span><span class="o">(</span><span class="n">list</span><span class="o">);</span>
-	<span class="o">}</span>
+  <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span>
+  <span class="o">{</span>
+    <span class="kt">int</span><span class="o">[]</span> <span class="n">list</span> <span class="o">=</span> <span class="o">{</span><span class="mi">1</span><span class="o">,</span> <span class="mi">7</span><span class="o">,</span> <span class="mi">3</span><span class="o">,</span> <span class="mi">4</span><span class="o">};</span>
+    <span class="n">getProductsOfAllIntsExceptAtIndex</span><span class="o">(</span><span class="n">list</span><span class="o">);</span>
+  <span class="o">}</span>
 
-	<span class="kd">public</span> <span class="kd">static</span> <span class="kt">int</span><span class="o">[]</span> <span class="nf">getProductsOfAllIntsExceptAtIndex</span><span class="o">(</span><span class="kt">int</span><span class="o">[]</span> <span class="n">arr</span><span class="o">)</span>
-	<span class="o">{</span>
-		<span class="kt">int</span> <span class="n">temp</span> <span class="o">=</span> <span class="mi">1</span><span class="o">;</span>
-		<span class="kt">int</span><span class="o">[]</span> <span class="n">returnArray</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">int</span><span class="o">[</span><span class="n">arr</span><span class="o">.</span><span class="na">length</span><span class="o">];</span>
-
-		<span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">arr</span><span class="o">.</span><span class="na">length</span><span class="o">;</span><span class="n">i</span><span class="o">++)</span>
-		<span class="o">{</span>
-			<span class="n">temp</span> <span class="o">=</span> <span class="mi">1</span><span class="o">;</span>
-			<span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">k</span><span class="o">=</span><span class="mi">0</span><span class="o">;</span> <span class="n">k</span> <span class="o">&lt;</span> <span class="n">arr</span><span class="o">.</span><span class="na">length</span><span class="o">;</span> <span class="n">k</span><span class="o">++)</span>
-			<span class="o">{</span>
-				<span class="k">if</span><span class="o">(</span><span class="n">arr</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">!=</span> <span class="n">arr</span><span class="o">[</span><span class="n">k</span><span class="o">])</span>
-				<span class="o">{</span>
-					<span class="n">temp</span> <span class="o">=</span> <span class="n">temp</span><span class="o">*</span><span class="n">arr</span><span class="o">[</span><span class="n">k</span><span class="o">];</span>
-				<span class="o">}</span>
-			<span class="o">}</span>
-			<span class="n">returnArray</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">=</span> <span class="n">temp</span><span class="o">;</span>
-		<span class="o">}</span>
-		<span class="k">return</span> <span class="n">returnArray</span><span class="o">;</span>
-	<span class="o">}</span>
+  <span class="kd">public</span> <span class="kd">static</span> <span class="kt">int</span><span class="o">[]</span> <span class="nf">getProductsOfAllIntsExceptAtIndex</span><span class="o">(</span><span class="kt">int</span><span class="o">[]</span> <span class="n">arr</span><span class="o">)</span>
+  <span class="o">{</span>
+    <span class="kt">int</span> <span class="n">temp</span> <span class="o">=</span> <span class="mi">1</span><span class="o">;</span>
+    <span class="kt">int</span><span class="o">[]</span> <span class="n">returnArray</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">int</span><span class="o">[</span><span class="n">arr</span><span class="o">.</span><span class="na">length</span><span class="o">];</span>
+    <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">arr</span><span class="o">.</span><span class="na">length</span><span class="o">;</span><span class="n">i</span><span class="o">++)</span>
+    <span class="o">{</span>
+      <span class="n">temp</span> <span class="o">=</span> <span class="mi">1</span><span class="o">;</span>
+      <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">k</span><span class="o">=</span><span class="mi">0</span><span class="o">;</span> <span class="n">k</span> <span class="o">&lt;</span> <span class="n">arr</span><span class="o">.</span><span class="na">length</span><span class="o">;</span> <span class="n">k</span><span class="o">++)</span>
+      <span class="o">{</span>
+        <span class="k">if</span><span class="o">(</span><span class="n">arr</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">!=</span> <span class="n">arr</span><span class="o">[</span><span class="n">k</span><span class="o">])</span>
+        <span class="o">{</span>
+          <span class="n">temp</span> <span class="o">=</span> <span class="n">temp</span><span class="o">*</span><span class="n">arr</span><span class="o">[</span><span class="n">k</span><span class="o">];</span>
+        <span class="o">}</span>
+      <span class="o">}</span>
+      <span class="n">returnArray</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">=</span> <span class="n">temp</span><span class="o">;</span>
+    <span class="o">}</span>
+    <span class="k">return</span> <span class="n">returnArray</span><span class="o">;</span>
+  <span class="o">}</span>
 <span class="o">}</span></code></pre></figure>
 
 
