@@ -4,8 +4,7 @@ title: find the area of overlay between two rectangles
 date: 2016-02-22 19:15:00
 description: code practice problem
 ---
-Write a function that takes an integer array as input and returns the highest possible product
-that you can get from three of the integers.
+Write a function to find the rectangular intersection of two given rectangles.
 
 Example:
 {% highlight java %}
@@ -34,6 +33,56 @@ lowest endpoint to get the overlap size.
 The same thing is done to get the overlap between the two Y lines.
 
 {% highlight java %}
+public class P6
+{
+	public static void main(String[] args)
+	{
+		//(leftX, bottomY, width, height)
+		Rectangle firstRectangle = new Rectangle(1,1,6,3);
+		Rectangle secondRectangle = new Rectangle(2,1,4,6);
+
+		//area of overlay between the two rectangles
+		System.out.println(findOverlayArea( findXOverlay(firstRectangle.determineXLine(),
+			secondRectangle.determineXLine()), findYOverlay(firstRectangle.determineYLine(), secondRectangle.determineYLine())));
+	}
+
+	//determine overlay between x line of the two rectangles
+	public static int findXOverlay(int[] x, int[] sx)
+	{
+		int higherStartingPoint = Math.max(x[0],sx[0]);
+		int lowerEndingPoint = Math.min(x[1],sx[1]);
+		int totalXOverlap = 0;
+		if(higherStartingPoint >= lowerEndingPoint)
+		{
+			return totalXOverlap;
+		}
+		else
+		{
+			totalXOverlap = lowerEndingPoint - higherStartingPoint;
+			return totalXOverlap;
+		}
+	}
+	//determine overlay between y line of the two rectangles
+	public static int findYOverlay(int[] y, int[] sy)
+	{
+		int higherStartingPoint = Math.max(y[0],sy[0]);
+		int lowerEndingPoint = Math.min(y[1],sy[1]);
+		int totalYOverlap = 0;
+		if(higherStartingPoint >= lowerEndingPoint)
+		{
+			return totalYOverlap;
+		}
+		else
+		{
+			totalYOverlap = lowerEndingPoint - higherStartingPoint;
+			return totalYOverlap;
+		}
+	}
+	public static int findOverlayArea(int xoverlay, int yoverlay)
+	{
+		return xoverlay*yoverlay;
+	}
+}
 {% endhighlight %}
 
 {% highlight java %}
