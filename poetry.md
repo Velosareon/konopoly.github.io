@@ -5,7 +5,7 @@ title: projects
 description:
 ---
 
-<p>page under construction<p>
+<p>project page is being redesigned, check back soon<p>
 <!---
 <ul class="post-list">
 {% for poem in site.poetry reversed %}

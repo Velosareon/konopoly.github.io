@@ -7,10 +7,10 @@ permalink: /about/
 <img class="col one right" src="/img/prof_pic.jpg">
 
 <br/>
-My name is Konstantin Polyashenko. I am a software developer and senior computer science
-student at California State University, Sacramento. My resume can be found
-<a href="https://drive.google.com/file/d/0B68G5GeXa1peNEpNZm1iN2VzUTQ/view?usp=sharing">here</a>
-and you can contact me using the links below.
+
+Hi, my name is Konstantin Polyashenko and I am a software developer. My goto languages are Java and Ruby, but I am familiar with other technologies as well. I also write about things that interest me on this site, so make sure to check out my blog posts. Aside from my major projects I also work on random software projects, generally for hackathons. My resume is found
+<a href="https://drive.google.com/file/d/0B68G5GeXa1peX2tFR1JUUWw0RTA/view?usp=sharing">here</a> .
+Feel free to send me your inquiries over emails.  
 
 <br/>
 <hr/>
