@@ -9,7 +9,7 @@ permalink: /about/
 <br/>
 
 Hi, my name is Konstantin Polyashenko and I am a software developer. My goto languages are Java and Ruby, but I am familiar with other technologies as well. I also write about things that interest me on this site, so make sure to check out my blog posts. Aside from my major projects I also work on random software projects, generally for hackathons. My resume is found
-<a href="https://drive.google.com/file/d/0B68G5GeXa1peX2tFR1JUUWw0RTA/view?usp=sharing">here</a> .
+<a href="https://drive.google.com/file/d/0B68G5GeXa1peQk1HM3hkc3FzRkE/view?usp=sharing">here</a> .
 Feel free to send me your inquiries over emails.  
 
 <br/>
