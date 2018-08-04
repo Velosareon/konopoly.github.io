@@ -30,10 +30,8 @@
 }
 
 .contents {
-  @media only screen and (min-width: $cut) {
-    margin-left: 0;
-    width: 48%;
-  }
+  text-align: center;
+  margin: 5px auto;
 }
 
 .contents-right {
