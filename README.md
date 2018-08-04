@@ -1,2 +1,2 @@
-# *konopoly.github.io
+# konopoly.github.io
 My personal website.
