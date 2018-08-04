@@ -1,2 +1,2 @@
-# *folio
-A simple theme for showcasing your work, emphasis on whitespace, transparency, and helvetica.
+# *konopoly.github.io
+My personal website.
